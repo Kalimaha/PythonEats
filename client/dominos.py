@@ -1,6 +1,6 @@
 import json
 import requests
 
-def get_pizza():
-    out = requests.get('http://localhost:9999/pizzas/42/')
-    return out.json()
+def get_pizza(type):
+    out = requests.get('http://localhost:9999/pizzas/' + type + '/')
+    return out.json() if out.status_code == 200 else out

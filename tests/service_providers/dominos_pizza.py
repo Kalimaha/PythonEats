@@ -13,8 +13,17 @@ class DominosPizzaTest(ServiceProviderTest):
 
     @given('a pizza exists')
     @upon_receiving('a request for a pepperoni pizza')
-    @with_request({'method': 'get', 'path': '/pizzas/42/'})
+    @with_request({'method': 'get', 'path': '/pizzas/pepperoni/'})
     @will_respond_with({'status': 200, 'body': json.dumps({'spam': 'eggs'})})
     def test_get_pizza(self):
-        pizza = get_pizza()
+        pizza = get_pizza('pepperoni')
         assert pizza['spam'] == 'eggs'
+
+
+    @given('a pizza exists')
+    @upon_receiving('a request for a NON-pepperoni pizza')
+    @with_request({'method': 'get', 'path': '/pizzas/margherita/'})
+    @will_respond_with({'status': 400})
+    def test_get_pizza(self):
+        pizza = get_pizza('margherita')
+        assert pizza.status_code == 400
