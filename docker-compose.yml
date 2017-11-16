@@ -6,3 +6,5 @@ services:
       context: .
     volumes:
       - .:/app
+    command: pact-test verify providers
+

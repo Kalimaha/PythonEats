@@ -1,8 +1,9 @@
 {
   "interactions": [
     {
+      "status": "PASSED",
       "providerState": "a pizza exists",
-      "description": "a request for a NON-pepperoni pizza",
+      "description": "a request for a margherita pizza",
       "request": {
         "body": null,
         "path": "/pizzas/margherita/",
@@ -27,16 +28,16 @@
         ]
       },
       "response": {
-        "body": null,
-        "status": 400,
+        "body": "{\"type\": \"margherita\"}",
+        "status": 200,
         "headers": []
       }
     }
   ],
   "provider": {
-    "name": "Restaurant Service"
+    "name": "Bubba Pizza"
   },
   "consumer": {
-    "name": "Restaurant Service Client"
+    "name": "UberEats"
   }
 }
