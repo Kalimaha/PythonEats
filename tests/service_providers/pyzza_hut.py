@@ -14,14 +14,23 @@ from python_eats.pyzza_hut import place_order
 @has_pact_with('PyzzaHut')
 class DominosPizzaTest(ServiceProviderTest):
 
-    @given('a pizza exists')
-    @upon_receiving('a request for a pizza')
+    @given('some pizzas exist')
+    @upon_receiving('a request for a pepperoni pizza')
     @with_request({'method': 'get', 'path': '/pizzas/pepperoni/'})
     @will_respond_with({'status': 200, 'body': json.dumps({'id': 42, 'type': 'pepperoni'})})
     def test_get_pepperoni_pizza(self):
         pizza = get_pizza('pepperoni')
         assert pizza['id'] == 42
         assert pizza['type'] == 'pepperoni'
+
+    @given('some pizzas exist')
+    @upon_receiving('a request for an hawaiian pizza')
+    @with_request({'method': 'get', 'path': '/pizzas/hawaiian/'})
+    @will_respond_with({'status': 404, 'body': json.dumps({'message': 'we do not serve pineapple with pizza'})})
+    def test_get_hawaiian_pizza(self):
+        pizza = get_pizza('hawaiian')
+        assert pizza.status_code == 404
+        assert pizza.json()['message'] == 'we do not serve pineapple with pizza'
 
     @given('a pizza exists')
     @upon_receiving('a request to place an order')

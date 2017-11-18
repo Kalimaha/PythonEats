@@ -2,8 +2,33 @@
   "interactions": [
     {
       "status": "PASSED",
-      "providerState": "a pizza exists",
-      "description": "a request for a pizza",
+      "providerState": "some pizzas exist",
+      "description": "a request for an hawaiian pizza",
+      "request": {
+        "body": null,
+        "path": "/pizzas/hawaiian/",
+        "query": "",
+        "method": "GET",
+        "headers": {
+          "Host": "localhost:9999",
+          "User-Agent": "python-requests/2.18.4",
+          "Accept-Encoding": "gzip, deflate",
+          "Accept": "*/*",
+          "Connection": "keep-alive"
+        }
+      },
+      "response": {
+        "body": {
+          "message": "we do not serve pineapple with pizza"
+        },
+        "status": 404,
+        "headers": {}
+      }
+    },
+    {
+      "status": "PASSED",
+      "providerState": "some pizzas exist",
+      "description": "a request for a pepperoni pizza",
       "request": {
         "body": null,
         "path": "/pizzas/pepperoni/",
