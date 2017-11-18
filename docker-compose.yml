@@ -1,10 +1,9 @@
 version: '2.1'
 
 services:
-  base:
+  app:
     build:
       context: .
     volumes:
       - .:/app
     command: pact-test verify providers
-

@@ -1,0 +1,65 @@
+{
+  "interactions": [
+    {
+      "status": "PASSED",
+      "providerState": "a pizza exists",
+      "description": "a request for a pizza",
+      "request": {
+        "body": null,
+        "path": "/pizzas/pepperoni/",
+        "query": "",
+        "method": "GET",
+        "headers": {
+          "Host": "localhost:9999",
+          "User-Agent": "python-requests/2.18.4",
+          "Accept-Encoding": "gzip, deflate",
+          "Accept": "*/*",
+          "Connection": "keep-alive"
+        }
+      },
+      "response": {
+        "body": {
+          "id": 42,
+          "type": "pepperoni"
+        },
+        "status": 200,
+        "headers": {}
+      }
+    },
+    {
+      "status": "PASSED",
+      "providerState": "a pizza exists",
+      "description": "a request to place an order",
+      "request": {
+        "body": {
+          "type": "pepperoni"
+        },
+        "path": "/orders/",
+        "query": "",
+        "method": "POST",
+        "headers": {
+          "Host": "localhost:9999",
+          "User-Agent": "python-requests/2.18.4",
+          "Accept-Encoding": "gzip, deflate",
+          "Accept": "*/*",
+          "Connection": "keep-alive",
+          "Content-Length": "21"
+        }
+      },
+      "response": {
+        "body": {
+          "id": 123,
+          "status": "confirmed"
+        },
+        "status": 201,
+        "headers": {}
+      }
+    }
+  ],
+  "provider": {
+    "name": "PyzzaHut"
+  },
+  "consumer": {
+    "name": "PythonEats"
+  }
+}
