@@ -8,6 +8,9 @@ def get_pizza(type):
     return out.json() if out.status_code == 200 else out
 
 
-def place_order(type):
-    out = requests.post(f'{PYZZA_HUT_BASE_URL}/orders/', data=json.dumps({'type': type}))
+def place_order(type, quantity=1):
+    out = requests.post(
+        f'{PYZZA_HUT_BASE_URL}/orders/',
+        data=json.dumps({'type': type, 'quantity': quantity})
+    )
     return out.json() if out.status_code == 201 else out
